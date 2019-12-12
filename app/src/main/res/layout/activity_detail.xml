@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+
+    <FrameLayout
+        android:layout_height="300dp"
+        android:layout_width="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_gradiant"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:scaleType="fitXY"
+            android:background="@android:color/background_dark"
+            android:layout_marginBottom="20dp"/>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/pager"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+    </androidx.viewpager.widget.ViewPager>
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_top"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:paddingLeft="@dimen/cell_padding"
+        android:paddingRight="@dimen/cell_padding">
+
+        <TextView
+            android:id="@+id/tv_tag"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textColor="@color/color_gray"
+            android:layout_centerHorizontal="true"
+            android:text="paid story"/>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_below="@id/tv_tag"
+            android:maxLines="1"
+            android:layout_centerHorizontal="true"
+            style="@style/title_gallery_style"/>
+
+        <LinearLayout
+            android:id="@+id/ll_stats"
+            android:layout_below="@id/tv_title"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true">
+
+            <TextView
+                style="@style/info_gallery_style"
+                android:id="@+id/tv_views"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/ic_action_eye"
+                android:gravity="center_vertical"
+                android:text="761k"/>
+
+            <TextView
+                style="@style/info_gallery_style"
+                android:id="@+id/tv_stars"
+                android:layout_marginLeft="5dp"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/ic_action_star"
+                android:text="24k"/>
+
+            <TextView
+                style="@style/info_gallery_style"
+                android:id="@+id/tv_list"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:drawableStart="@drawable/ic_action_list"
+                android:text="31"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_description"
+            style="@style/desc_gallery_style"
+            android:layout_below="@id/ll_stats"
+            android:ellipsize="end"
+            android:justificationMode="inter_word"
+            android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
