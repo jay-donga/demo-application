@@ -23,6 +23,7 @@ import android.widget.TextView;
 
 import com.demoapplication.adapter.CustomPagerAdapter;
 import com.demoapplication.model.Article;
+import com.demoapplication.model.Content;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
@@ -33,11 +34,12 @@ import static java.security.AccessController.getContext;
 
 public class DetailActivity extends AppCompatActivity {
 
-    List<Article> mList;
+    List<Content> mList;
     TextView tvTitle,tvDescription,tvView,tvStar,tvList;
     ImageView ivGradient;
     int position = 0;
     Palette p;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +60,7 @@ public class DetailActivity extends AppCompatActivity {
         int height = displayMetrics.heightPixels;
         int width = displayMetrics.widthPixels;
 
-        mList = (List<Article>) getIntent().getSerializableExtra("data");
+        mList = (List<Content>) getIntent().getSerializableExtra("data");
         position = getIntent().getIntExtra("position",0);
         onpageselect(position);
 
@@ -96,10 +98,10 @@ public class DetailActivity extends AppCompatActivity {
 
     public void onpageselect(int position){
         tvTitle.setText(mList.get(position).getTitle());
-        tvDescription.setText(mList.get(position).getDescription());
-        tvView.setText(" "+mList.get(position).getViews()+" Reads");
-        tvStar.setText(" "+mList.get(position).getStars()+" Votes");
-        tvList.setText(" "+mList.get(position).getList()+" Parts");
+        tvDescription.setText(mList.get(position).getPromoMsg());
+        tvView.setText(" "+mList.get(position).getViewCount()+" Reads");
+        tvStar.setText(" "+mList.get(position).getLikeCount()+" Votes");
+        tvList.setText(" "+mList.get(position).getReadCount()+" Parts");
 
         Target target = new Target() {
 
@@ -128,7 +130,7 @@ public class DetailActivity extends AppCompatActivity {
         };
 
 
-        Picasso.get().load(mList.get(position).getImage()).into(target);
+        Picasso.get().load(mList.get(position).getCover().getThumbnail()).into(target);
 
     }
 
@@ -165,7 +167,6 @@ public class DetailActivity extends AppCompatActivity {
             if (position <-1){  // [-Infinity,-1)
                 // This page is way off-screen to the left.
                 page.setAlpha(0);
-
             }
 
             else if (position <=1){ // [-1,1]
@@ -175,6 +176,7 @@ public class DetailActivity extends AppCompatActivity {
                 page.setAlpha(Math.max(MIN_ALPHA,1-Math.abs(position)));
 
             }
+
             else {  // (1,+Infinity]
                 // This page is way off-screen to the right.
                 page.setAlpha(0);

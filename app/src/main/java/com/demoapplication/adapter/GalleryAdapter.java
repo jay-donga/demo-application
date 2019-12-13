@@ -2,6 +2,7 @@ package com.demoapplication.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,17 +15,23 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.demoapplication.DetailActivity;
 import com.demoapplication.R;
 import com.demoapplication.model.Article;
+import com.demoapplication.model.Content;
+import com.demoapplication.model.Cover;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.MyViewHolder> {
-    public List<Article> mList = new ArrayList<>();
+    public List<Content> mList = new ArrayList<>();
     Context mContext;
 
-    public GalleryAdapter(List<Article> mList,Context mContext) {
+    public GalleryAdapter(List<Content> mList,Context mContext) {
         this.mContext = mContext;
         this.mList = mList;
     }
@@ -72,13 +79,33 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.MyViewHo
     @Override
     public void onBindViewHolder(@NonNull GalleryAdapter.MyViewHolder holder, int position) {
 
-        Picasso.get().load(mList.get(position).getImage()).into(holder.ivImage);
         holder.tvTitle.setText(mList.get(position).getTitle());
-        holder.tvDescription.setText(mList.get(position).getDescription());
-        holder.tvView.setText(mList.get(position).getViews());
-        holder.tvStar.setText(mList.get(position).getStars());
-        holder.tvList.setText(mList.get(position).getList());
+        holder.tvDescription.setText(mList.get(position).getPromoMsg());
+        holder.tvView.setText(mList.get(position).getViewCount()+"");
+        holder.tvStar.setText(mList.get(position).getLikeCount()+"");
+        holder.tvList.setText(mList.get(position).getReadCount()+"");
 
+
+        try{
+
+           //Picasso.get().load(mList.get(position).getCover().getThumbnail()).into(holder.ivImage);
+            Picasso.get()
+                    .load("https://cdn.storymirror.com/"+mList.get(position).getCover().getThumbnail())
+                    .into(holder.ivImage, new Callback() {
+                        @Override
+                        public void onSuccess() {
+
+                        }
+
+                        @Override
+                        public void onError(Exception e) {
+                            //Picasso.get().load(mList.get(position).getCover().getThumbnail()).into(holder.ivImage);
+                        }
+                    });
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
 
     }

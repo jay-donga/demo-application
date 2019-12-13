@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.demoapplication.DetailActivity;
 import com.demoapplication.R;
+import com.demoapplication.model.Block;
 import com.demoapplication.model.Example;
 
 import java.util.ArrayList;
@@ -21,10 +22,10 @@ import java.util.List;
 
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MyViewHolder> {
 
-    List<Example> mList = new ArrayList<>();
+    List<Block> mList = new ArrayList<>();
     Context mContext;
 
-    public MainAdapter(List<Example> mList,Context ctx) {
+    public MainAdapter(List<Block> mList,Context ctx) {
         this.mList = mList;
         this.mContext = ctx;
     }
@@ -57,8 +58,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull MainAdapter.MyViewHolder holder, int position) {
             holder.tvTitle.setText(mList.get(position).getTitle());
-            holder.tvDescription.setText(mList.get(position).getDescription());
-            GalleryAdapter adapter  = new GalleryAdapter(mList.get(position).getArticles(),mContext);
+            holder.tvDescription.setText(mList.get(position).getTitle());
+            GalleryAdapter adapter  = new GalleryAdapter(mList.get(position).getData().getContents(),mContext);
         //use a linear layout manager
         LinearLayoutManager layoutManager = new LinearLayoutManager(mContext);
         layoutManager.setOrientation(RecyclerView.HORIZONTAL);

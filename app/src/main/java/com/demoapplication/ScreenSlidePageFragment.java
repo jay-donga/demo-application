@@ -13,18 +13,19 @@ import androidx.fragment.app.Fragment;
 import androidx.palette.graphics.Palette;
 
 import com.demoapplication.model.Article;
+import com.demoapplication.model.Content;
 import com.squareup.picasso.Picasso;
 
 public class ScreenSlidePageFragment extends Fragment {
 
-    Article article;
+    Content article;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle bundle = this.getArguments();
         if (bundle != null) {
-            article = (Article) bundle.getSerializable("data");
+            article = (Content) bundle.getSerializable("data");
         }
     }
 
@@ -35,7 +36,7 @@ public class ScreenSlidePageFragment extends Fragment {
                 R.layout.pager_item, container, false);
 
         ImageView imageView =  rootView.findViewById(R.id.imageView);
-        Picasso.get().load(article.getImage()).into(imageView);
+        Picasso.get().load("https://cdn.storymirror.com/"+article.getCover().getThumbnail()).into(imageView);
 
 
         return rootView;
