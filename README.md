@@ -27,3 +27,6 @@ This sample uses the Gradle build system.
 
 Screenshots
 -----------
+<a href="url"><img src="https://user-images.githubusercontent.com/48313933/70789578-47dc5a00-1db9-11ea-8c6a-da3d0db20130.png" align="left" height="640" width="360"></a>
+
+<a href="url"><img src="https://user-images.githubusercontent.com/48313933/70789475-1e233300-1db9-11ea-870b-cf20e1e7dc71.png" align="left" height="640" width="360"></a>
