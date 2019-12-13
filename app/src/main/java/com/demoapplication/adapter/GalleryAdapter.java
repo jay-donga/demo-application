@@ -61,6 +61,10 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.MyViewHo
     public GalleryAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v =  LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_gallery, parent, false);
 
+        ViewGroup.LayoutParams layoutParams = v.getLayoutParams();
+        layoutParams.width = (int) (parent.getWidth() * 0.90);
+        v.setLayoutParams(layoutParams);
+
         MyViewHolder vh = new MyViewHolder(v);
         return vh;
     }

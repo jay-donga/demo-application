@@ -38,6 +38,6 @@ public class Custom_View extends LinearLayout {
         int height = displayMetrics.heightPixels;
         int width = displayMetrics.widthPixels;
 
-        setMeasuredDimension((int) (width*0.90), (int) (width*0.90));
+        setMeasuredDimension(widthMeasureSpec, heightMeasureSpec);
     }
 }
