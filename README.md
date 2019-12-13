@@ -1,8 +1,4 @@
 
-Jay Donga <dongajay1305@gmail.com>
-Sat, Mar 23, 5:34 PM
-to me
-
 Demo Application
 =====================================================
 
